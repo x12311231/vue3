@@ -2,6 +2,11 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import HelloDemo from "@/components/HelloDemo.vue";
+import SpriteDrink from "@/components/SpriteDrink.vue";
+import IfDemo from "@/components/IfDemo.vue";
+import ForDemo from "@/components/ForDemo.vue";
+import EventDemo from "@/components/EventDemo.vue";
+import WatchDemo from "@/components/WatchDemo.vue";
 </script>
 
 <template>
@@ -10,7 +15,12 @@ import HelloDemo from "@/components/HelloDemo.vue";
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      <HelloDemo />
+      <HelloDemo msg="this is a demo component" />
+        <sprite-drink name="雪碧" price="3￥"/>
+        <if-demo/>
+        <for-demo/>
+        <event-demo/>
+        <watch-demo/>
     </div>
   </header>
 
@@ -44,6 +54,12 @@ header {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+      flex-direction: column;
   }
+}
+</style>
+<style>
+.text-bold {
+    font-weight: bold;
 }
 </style>
