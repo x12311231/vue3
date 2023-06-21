@@ -7,6 +7,7 @@ import IfDemo from "@/components/IfDemo.vue";
 import ForDemo from "@/components/ForDemo.vue";
 import EventDemo from "@/components/EventDemo.vue";
 import WatchDemo from "@/components/WatchDemo.vue";
+import WatchSetupDemo from "@/components/WatchSetupDemo.vue";
 </script>
 
 <template>
@@ -20,7 +21,8 @@ import WatchDemo from "@/components/WatchDemo.vue";
         <if-demo/>
         <for-demo/>
         <event-demo/>
-        <watch-demo/>
+<!--        <watch-demo/>-->
+        <watch-setup-demo/>
     </div>
   </header>
 

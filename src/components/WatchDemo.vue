@@ -12,7 +12,7 @@
     <div>
         <span>message</span>
         <ul>
-            <li v-for="n in news" :key="n.id">{{ n.title }} {{ n.author }}</li>
+            <li v-for="n in news" :key="n.id">{{ n.id }} {{ n.title }} {{ n.author }}</li>
         </ul>
     </div>
 </div>
@@ -34,7 +34,8 @@ export default {
                 }
             },
             haveNews: this.haveNewsFlag(),
-            news: []
+            news: [],
+            lastNewsTime: (new Date()).toString()
         }
     },
     watch: {
@@ -52,17 +53,22 @@ export default {
             },
             deep: true
         },
-        haveNews: {
-            handler(newValue, oldValue) {
-                console.log('newValue:', newValue)
-                console.log('oldValue:', oldValue)
-                console.log('==', newValue === oldValue)
-                if (newValue === true) {
-                    this.getNews()
-                }
-                this.haveNews = false
-            },
-            immediate: true
+        // haveNews: {
+        //     handler(newValue, oldValue) {
+        //         // console.log('newValue:', newValue)
+        //         // console.log('oldValue:', oldValue)
+        //         // console.log('==', newValue === oldValue)
+        //         console.log('watch haveNews', newValue)
+        //         if (newValue === true) {
+        //             this.getNews()
+        //         }
+        //         this.haveNews = false
+        //     },
+        //     immediate: true
+        // },
+        lastNewsTime(newValue, old) {
+            console.log('lastNewsTime watch', newValue)
+            this.getNews()
         }
     },
     methods: {
@@ -75,6 +81,11 @@ export default {
                 this.answer = 'Error! Could not reach the API. ' + error
             }
         },
+        getLastNewsTime() {
+            if (Math.random() * 10 > 3) {
+                this.lastNewsTime = (new Date()).toString()
+            }
+        },
         addData() {
             this.someObject.a.a1++;
         },
@@ -83,16 +94,18 @@ export default {
         },
         updateHaveNews() {
             this.haveNews = this.haveNewsFlag()
+            console.log('haveNews', this.haveNews)
         },
         timerHaveNews() {
-            setInterval(this.updateHaveNews, 5000)
+            // setInterval(this.updateHaveNews, 5000)
+            setInterval(this.getLastNewsTime, 5000)
         },
         getNews() {
             const author = ['john', 'bob', 'tom', 'fish', 'cat', 'dog'];
             let news;
             news = []
             let j = this.news.length
-            for (let i = 1; i < Math.random() * 4; i++) {
+            for (let i = 0; i < Math.random() * 4 + 1; i++) {
                 news.push({id: j++, title:'new:' + new Date(), author: author[Math.floor(Math.random() * 6)]})
             }
             console.log('newss', news)
