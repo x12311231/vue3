@@ -8,6 +8,13 @@ import ForDemo from "@/components/ForDemo.vue";
 import EventDemo from "@/components/EventDemo.vue";
 import WatchDemo from "@/components/WatchDemo.vue";
 import WatchSetupDemo from "@/components/WatchSetupDemo.vue";
+import RefDemo from "@/components/RefDemo.vue";
+import {ref} from "vue";
+let refMsg = ref("refMsg")
+function changeRefMsg() {
+    refMsg.value = "refMsg" + (new Date()).toString()
+}
+
 </script>
 
 <template>
@@ -22,7 +29,8 @@ import WatchSetupDemo from "@/components/WatchSetupDemo.vue";
         <for-demo/>
         <event-demo/>
 <!--        <watch-demo/>-->
-        <watch-setup-demo/>
+<!--        <watch-setup-demo/>-->
+        <ref-demo :msg="refMsg" :changeRefMsg="changeRefMsg"/>
     </div>
   </header>
 
