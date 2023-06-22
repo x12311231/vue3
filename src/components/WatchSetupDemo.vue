@@ -15,6 +15,10 @@
                 <li v-for="n in news" :key="n.id">{{ n.id }} {{ n.title }} {{ n.author }}</li>
             </ul>
         </div>
+        <div>
+            <button @click="getLastNewsTime">get news</button>
+            <div>{{ lastNewsTime }}</div>
+        </div>
     </div>
 </template>
 
@@ -25,7 +29,7 @@ const question = ref('')
 const answer = ref('Questions usually contain a question mark. ;-)')
 
 let news = reactive([])
-let hasNews = ref(false)
+// let hasNews = ref(false)
 let lastNewsTime = ref((new Date()).toString())
 
 // 可以直接侦听一个 ref
@@ -51,7 +55,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 watch(lastNewsTime,  (newValue, oldValue) => {
     console.log('lastNewsTime watch', newValue)
     getNews()
-}, {immediate: true})
+}, {immediate: true, deep: true, flush: 'post'})
 
 let someObject = reactive({
     a: {
@@ -70,7 +74,8 @@ function haveNewsFlag() {
 }
 function getLastNewsTime() {
     if (Math.random() * 10 > 3) {
-        lastNewsTime = (new Date()).toString()
+        console.log('------------', lastNewsTime)
+        lastNewsTime.value = (new Date()).toString()
         console.log('lastNewsTime', lastNewsTime)
     }
 }
