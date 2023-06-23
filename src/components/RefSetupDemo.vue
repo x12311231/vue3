@@ -16,34 +16,26 @@
         </div>
     </div>
 </template>
+<script setup>
+import {onMounted, reactive, ref} from "vue";
 
-<script>
-export default {
-    name: "RefDemo",
-    props: {
-        changeRefMsg: {},
-        msg: {}
-    },
-    data() {
-        return {
-            items: [
-                {name: "php"},
-                {name: "java"},
-                {name: "c"}
-            ]
-        }
-    },
-    methods: {
-        addItem() {
-            let item = ["python", "javascript", "golang", "rust", "ruby", "c++", "nodejs"]
-            this.items.push({name: item[Math.floor(Math.random() * item.length)]})
-        }
-    },
-    mounted() {
-        this.$refs.input.value = 'ref test'
-        this.$refs.input.focus()
-    }
+defineProps({changeRefMsg: {}, 'msg': {}})
+// defineProps(['changeRefMsg', 'msg'])
+
+let items = reactive([
+    {name: "php"},
+    {name: "java"},
+    {name: "c"}
+])
+function addItem() {
+    let item = ["python", "javascript", "golang", "rust", "ruby", "c++", "nodejs"]
+    items.push({name: item[Math.floor(Math.random() * item.length)]})
 }
+const input = ref(null)
+onMounted(() => {
+    input.value.value = 'ref test'
+    input.value.focus()
+})
 </script>
 
 <style scoped>

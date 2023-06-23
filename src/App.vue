@@ -9,11 +9,18 @@ import EventDemo from "@/components/EventDemo.vue";
 import WatchDemo from "@/components/WatchDemo.vue";
 import WatchSetupDemo from "@/components/WatchSetupDemo.vue";
 import RefDemo from "@/components/RefDemo.vue";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
+import RefSetupDemo from "@/components/RefSetupDemo.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
 }
+
+let ref_demo = ref(null)
+onMounted(() => {
+    console.log('refDemo ref', ref_demo.value)
+    console.log('refDemo ref', ref_demo.value.items)
+})
 
 </script>
 
@@ -30,7 +37,8 @@ function changeRefMsg() {
         <event-demo/>
 <!--        <watch-demo/>-->
 <!--        <watch-setup-demo/>-->
-        <ref-demo :msg="refMsg" :changeRefMsg="changeRefMsg"/>
+<!--        <ref-demo :msg="refMsg" :changeRefMsg="changeRefMsg" ref="ref_demo"/>-->
+        <ref-setup-demo :msg="refMsg" :changeRefMsg="changeRefMsg" ref="ref_demo"/>
     </div>
   </header>
 
