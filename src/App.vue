@@ -11,6 +11,8 @@ import WatchSetupDemo from "@/components/WatchSetupDemo.vue";
 import RefDemo from "@/components/RefDemo.vue";
 import {onMounted, ref} from "vue";
 import RefSetupDemo from "@/components/RefSetupDemo.vue";
+import CustomEventDemo from "@/components/CustomEventDemo.vue";
+import SlotDemo from "@/components/SlotDemo.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -22,6 +24,10 @@ onMounted(() => {
     console.log('refDemo ref', ref_demo.value.items)
 })
 
+let fontSize = ref(1)
+function enlargeFontSize() {
+    fontSize.value += 0.1
+}
 </script>
 
 <template>
@@ -39,6 +45,13 @@ onMounted(() => {
 <!--        <watch-setup-demo/>-->
 <!--        <ref-demo :msg="refMsg" :changeRefMsg="changeRefMsg" ref="ref_demo"/>-->
         <ref-setup-demo :msg="refMsg" :changeRefMsg="changeRefMsg" ref="ref_demo"/>
+        <div :style="{ fontSize: fontSize + 'em' }">
+            <custom-event-demo @enlarge-size="enlargeFontSize"/>
+<!--            <custom-event-demo @enlarge-size="fontSize += 0.1"/>-->
+            <SlotDemo>
+                <div class="danger">Something bad happened</div>
+            </SlotDemo>
+        </div>
     </div>
   </header>
 
@@ -79,5 +92,8 @@ header {
 <style>
 .text-bold {
     font-weight: bold;
+}
+.danger {
+    color: darkred;
 }
 </style>
