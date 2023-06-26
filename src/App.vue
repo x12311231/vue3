@@ -13,6 +13,8 @@ import {onMounted, ref} from "vue";
 import RefSetupDemo from "@/components/RefSetupDemo.vue";
 import CustomEventDemo from "@/components/CustomEventDemo.vue";
 import SlotDemo from "@/components/SlotDemo.vue";
+import NamedSlotDemo from "@/components/NamedSlotDemo.vue";
+import DynamicNamedSlotDemo from "@/components/DynamicNamedSlotDemo.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -27,6 +29,10 @@ onMounted(() => {
 let fontSize = ref(1)
 function enlargeFontSize() {
     fontSize.value += 0.1
+}
+let dynamicSlot = ref("top")
+function changeDynamicSlot() {
+    dynamicSlot.value = dynamicSlot.value === "top" ? "bottom" : "top"
 }
 </script>
 
@@ -48,10 +54,32 @@ function enlargeFontSize() {
         <div :style="{ fontSize: fontSize + 'em' }">
             <custom-event-demo @enlarge-size="enlargeFontSize"/>
 <!--            <custom-event-demo @enlarge-size="fontSize += 0.1"/>-->
-            <SlotDemo>
+            <SlotDemo v-slot="subProp">
+                <div>msg: {{ subProp.msg }} </div>
                 <div class="danger">Something bad happened</div>
             </SlotDemo>
         </div>
+        <named-slot-demo>
+            <template #header="headerProp">
+                {{ headerProp }}
+                <h1>Here might be a page title</h1>
+            </template>
+
+<!--            <template #default>-->
+                <p>A paragraph for the main content.</p>
+                <p>And another one.</p>
+<!--            </template>-->
+            <div>main</div>
+
+            <template #footer>
+                <p>Here's some contact info</p>
+            </template>
+        </named-slot-demo>
+        <dynamic-named-slot-demo :changeDynamicSlot="changeDynamicSlot">
+            <template #[dynamicSlot]>
+                I AM DYNAMIC SLOT
+            </template>
+        </dynamic-named-slot-demo>
     </div>
   </header>
 
