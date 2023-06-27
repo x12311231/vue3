@@ -1,5 +1,5 @@
 <template>
-    <button @click="$emit('enlarge-size')">enlarge font size</button>
+    <button @click="$emit('enlarge-size', this)">enlarge font size</button>
     <div>
         <h6>custom event 1</h6>
         <p>this is a paragraph1</p>

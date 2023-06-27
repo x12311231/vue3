@@ -15,6 +15,8 @@ import CustomEventDemo from "@/components/CustomEventDemo.vue";
 import SlotDemo from "@/components/SlotDemo.vue";
 import NamedSlotDemo from "@/components/NamedSlotDemo.vue";
 import DynamicNamedSlotDemo from "@/components/DynamicNamedSlotDemo.vue";
+import FancyListDemo from "@/components/FancyListDemo.vue";
+import FormDemo from "@/components/FormDemo.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -27,7 +29,8 @@ onMounted(() => {
 })
 
 let fontSize = ref(1)
-function enlargeFontSize() {
+function enlargeFontSize(event) {
+    console.log('enlarge font size event', event)
     fontSize.value += 0.1
 }
 let dynamicSlot = ref("top")
@@ -80,6 +83,22 @@ function changeDynamicSlot() {
                 I AM DYNAMIC SLOT
             </template>
         </dynamic-named-slot-demo>
+        <fancy-list-demo :limit="5" url="some-api">
+            <template #item="{ title, author }">
+                <div>
+                    <p>{{ title }}</p>
+                    <p>{{ author }}</p>
+                </div>
+            </template>
+        </fancy-list-demo>
+        <fancy-list-demo :limit="5" url="some-api">
+            <template #item="v">
+                <div>
+                    {{ v }}
+                </div>
+            </template>
+        </fancy-list-demo>
+        <form-demo method="get"/>
     </div>
   </header>
 
