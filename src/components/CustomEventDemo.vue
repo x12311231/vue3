@@ -12,6 +12,10 @@
         <h6>custom event 3</h6>
         <p>this is a paragraph3</p>
     </div>
+    <div>
+        <span>counter</span>
+
+    </div>
 </template>
 
 <script>

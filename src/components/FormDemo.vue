@@ -4,6 +4,9 @@
 <!--        <input-demo label="user name" name="username" :value="username" @input-change="usernameChange"/>-->
         <input-demo label="user name" name="username" :value="username" @input-change="event => username = event.$refs.input.value"/>
         <input-demo label="password" name="password" type="password" @input-change="event => password = event.$refs.input.value"/>
+<!--        <input1-demo label="address" name="address" @input-change="$event => address = $event.target.value"></input1-demo>-->
+        <input1-demo label="address" name="address" @input-change="event => address = event.target.value"></input1-demo>
+        <input2-demo label="city" name="city" v-model="city"/>
         <div>
             <label for="email">
                 email
@@ -26,19 +29,25 @@
 
 <script>
 import InputDemo from "@/components/InputDemo.vue";
+import Input1Demo from "@/components/Input1Demo.vue";
+import Input2Demo from "@/components/Input2Demo.vue";
 
 export default {
     name: "FormDemo",
-    components: {InputDemo},
+    components: {Input2Demo, Input1Demo, InputDemo},
     props: {
-        method: {type: String, required: true, in:['get', 'post']}
+        method: {type: String, required: true, validator(v) {
+            return ['post', 'get'].includes(v)
+            }}
     },
     data() {
         return {
             username: 'x12311231',
             password: '',
             email: '',
-            company: ''
+            company: '',
+            address: '',
+            city: ''
         }
     },
     methods: {
