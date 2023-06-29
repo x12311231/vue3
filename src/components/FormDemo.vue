@@ -7,6 +7,12 @@
 <!--        <input1-demo label="address" name="address" @input-change="$event => address = $event.target.value"></input1-demo>-->
         <input1-demo label="address" name="address" @input-change="event => address = event.target.value"></input1-demo>
         <input2-demo label="city" name="city" v-model="city"/>
+        <input3-demo label="wechat" name="wechat" v-model="wechat" />
+        <input4-demo label="qq" name="qq" v-model:custom-value="qq" />
+        <p>first name: {{ firstName }} last name: {{ lastName }}</p>
+        <input5-demo v-model:last-name="lastName" v-model:first-name="firstName" />
+        <p>band card: {{ bankCard }}</p>
+        <model-modifiers-custom-demo v-model.card="bankCard" />
         <div>
             <label for="email">
                 email
@@ -31,10 +37,14 @@
 import InputDemo from "@/components/InputDemo.vue";
 import Input1Demo from "@/components/Input1Demo.vue";
 import Input2Demo from "@/components/Input2Demo.vue";
+import Input3Demo from "@/components/Input3Demo.vue";
+import Input4Demo from "@/components/Input4Demo.vue";
+import Input5Demo from "@/components/Input5Demo.vue";
+import ModelModifiersCustomDemo from "@/components/ModelModifiersCustomDemo.vue";
 
 export default {
     name: "FormDemo",
-    components: {Input2Demo, Input1Demo, InputDemo},
+    components: {ModelModifiersCustomDemo, Input5Demo, Input4Demo, Input3Demo, Input2Demo, Input1Demo, InputDemo},
     props: {
         method: {type: String, required: true, validator(v) {
             return ['post', 'get'].includes(v)
@@ -47,7 +57,12 @@ export default {
             email: '',
             company: '',
             address: '',
-            city: ''
+            city: '',
+            wechat: '',
+            qq: '',
+            firstName: '',
+            lastName: '',
+            bankCard: ''
         }
     },
     methods: {
