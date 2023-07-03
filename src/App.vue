@@ -17,6 +17,8 @@ import NamedSlotDemo from "@/components/NamedSlotDemo.vue";
 import DynamicNamedSlotDemo from "@/components/DynamicNamedSlotDemo.vue";
 import FancyListDemo from "@/components/FancyListDemo.vue";
 import FormDemo from "@/components/FormDemo.vue";
+import AttributeDemo from "@/components/AttributeDemo.vue";
+import MouseDemo from "@/components/MouseDemo.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -99,6 +101,8 @@ function changeDynamicSlot() {
             </template>
         </fancy-list-demo>
         <form-demo method="get"/>
+        <attribute-demo class="danger"/>
+      <mouse-demo />
     </div>
   </header>
 
@@ -142,5 +146,8 @@ header {
 }
 .danger {
     color: darkred;
+}
+.v-border {
+    border: #282828 1px solid;
 }
 </style>

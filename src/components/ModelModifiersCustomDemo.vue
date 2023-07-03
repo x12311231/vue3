@@ -22,6 +22,7 @@ export default {
             // if (this.modelModifiers.capitalize) {
             //     value = value.charAt(0).toUpperCase() + value.slice(1)
             // }
+            // if parent use this with v-model:title="someVariables", this should be titleModifiers
             if (this.modelModifiers.card) {
                 value1 = ''
                 for (let i = 0; i < e.target.value.length; i++) {
