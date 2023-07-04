@@ -9,7 +9,7 @@ import EventDemo from "@/components/EventDemo.vue";
 import WatchDemo from "@/components/WatchDemo.vue";
 import WatchSetupDemo from "@/components/WatchSetupDemo.vue";
 import RefDemo from "@/components/RefDemo.vue";
-import {onMounted, ref} from "vue";
+import {createApp, onMounted, ref} from "vue";
 import RefSetupDemo from "@/components/RefSetupDemo.vue";
 import CustomEventDemo from "@/components/CustomEventDemo.vue";
 import SlotDemo from "@/components/SlotDemo.vue";
@@ -19,6 +19,7 @@ import FancyListDemo from "@/components/FancyListDemo.vue";
 import FormDemo from "@/components/FormDemo.vue";
 import AttributeDemo from "@/components/AttributeDemo.vue";
 import MouseDemo from "@/components/MouseDemo.vue";
+import CustomDirectiveDemo from "@/components/CustomDirectiveDemo.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -103,6 +104,7 @@ function changeDynamicSlot() {
         <form-demo method="get"/>
         <attribute-demo class="danger"/>
       <mouse-demo />
+      <custom-directive-demo />
     </div>
   </header>
 
