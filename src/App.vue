@@ -20,6 +20,7 @@ import FormDemo from "@/components/FormDemo.vue";
 import AttributeDemo from "@/components/AttributeDemo.vue";
 import MouseDemo from "@/components/MouseDemo.vue";
 import CustomDirectiveDemo from "@/components/CustomDirectiveDemo.vue";
+import PluginDemo from "@/components/PluginDemo.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -105,6 +106,7 @@ function changeDynamicSlot() {
         <attribute-demo class="danger"/>
       <mouse-demo />
       <custom-directive-demo />
+      <plugin-demo />
     </div>
   </header>
 
