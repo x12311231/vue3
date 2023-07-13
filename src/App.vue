@@ -21,6 +21,8 @@ import AttributeDemo from "@/components/AttributeDemo.vue";
 import MouseDemo from "@/components/MouseDemo.vue";
 import CustomDirectiveDemo from "@/components/CustomDirectiveDemo.vue";
 import PluginDemo from "@/components/PluginDemo.vue";
+import PiniaDemo from "@/components/PiniaDemo.vue";
+import PiniaDemo1 from "@/components/PiniaDemo1.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -107,6 +109,8 @@ function changeDynamicSlot() {
       <mouse-demo />
       <custom-directive-demo />
       <plugin-demo />
+      <pinia-demo />
+      <pinia-demo1 />
     </div>
   </header>
 
