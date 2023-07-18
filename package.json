@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest --dom"
   },
   "dependencies": {
     "pinia": "^2.1.4",
@@ -14,6 +15,9 @@
   "devDependencies": {
     "@vitejs/plugin-legacy": "^4.0.4",
     "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.3.5"
+    "@vue/test-utils": "^2.4.0",
+    "happy-dom": "^10.5.1",
+    "vite": "^4.3.5",
+    "vitest": "^0.33.0"
   }
 }
