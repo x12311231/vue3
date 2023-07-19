@@ -7,7 +7,7 @@ export function withSetup() {
         setup() {
             // result = composable()
             // // 忽略模板警告
-            // return () => {}
+            return () => {}
         }
     })
     app.mount(document.createElement('div'))

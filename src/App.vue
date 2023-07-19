@@ -23,6 +23,7 @@ import CustomDirectiveDemo from "@/components/CustomDirectiveDemo.vue";
 import PluginDemo from "@/components/PluginDemo.vue";
 import PiniaDemo from "@/components/PiniaDemo.vue";
 import PiniaDemo1 from "@/components/PiniaDemo1.vue";
+import CustomElement from "./components/CustomElement.vue";
 let refMsg = ref("refMsg")
 function changeRefMsg() {
     refMsg.value = "refMsg" + (new Date()).toString()
@@ -111,6 +112,7 @@ function changeDynamicSlot() {
       <plugin-demo />
       <pinia-demo />
       <pinia-demo1 />
+      <custom-element />
     </div>
   </header>
 
